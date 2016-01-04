@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Today's Entrées</title>
+  </head>
+  <body>
+    <h1>Entrées</h1>
+
+    <% @entrees.each do |entree| %>
+      <li><a href="/entrees/<%= entree.id %>"><%= entree.name %></a></li><br>
+    <% end %>
+
+  </body>
+</html>

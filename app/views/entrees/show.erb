@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Entrées</title>
+  </head>
+  <body>
+    <h1>NAME: <%=@entree.name%></h1>
+    <h2>DESCRPTION: <%=@entree.description%></h2>
+    <h3>INGREDIENTS: <%=@entree.ingredients%></h3>
+
+    <p>
+      WARNING! If you wish to delete please click below:<br>
+        <form action="/entrees/<%=@entree.id%>/delete" method="post">
+        <input type="submit" value="DELETE"></p>
+        </form>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Input a New Entrée</title>
+  </head>
+  <body>
+
+    <h1>Input a New Entrée</h1>
+
+        <form action="/entrees" method="POST">
+          <h4><label>New Entrée Name:</label>
+              <input  type="text" name="entree[name]"></input><br>
+          <label>New Entrée Description:</label>
+              <input  type="text" name="entree[description]"></input><br>
+          <label>New Entrée Ingredients:</label>
+              <input  type="text" name="entree[ingredients]"></input></h4>
+
+          <h4><label>Please select the Menu you woud like to add it to:</label></h4>
+
+          <%Menu.all.each do |menu|%>
+            <input type="checkbox" name="menu[menu_id]" value="<%=menu.id%>"><%=menu.name%></input>
+          <%end%>
+
+          <br><br>
+
+          <h3><label>If you wish to create a new menu, enter new menu name below:</label></h3>
+
+          <label>New Menu Name:</label>
+              <input  type="text" name="menu[name]"></input>
+            <br></br>
+          <input type="submit" value="Create Entree">
+        </form>
+
+
+
+
+  </body>
+</html>

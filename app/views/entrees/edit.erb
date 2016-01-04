@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Entrée</title>
+  </head>
+  <body>
+    <h1>Edit Entrée</h1>
+
+    <h4>CURRENTLY:</h4>
+      <%= "NAME: #{@entree.name}" %><br>
+      <%= "DESCRIPTION: #{@entree.description}" %><br>
+      <%= "INGREDIENTS: #{@entree.ingredients}" %><br><br>
+
+    <h4>EDIT TO:</h4>
+    <form action="/entrees" method="POST">
+      <label>New Entrée Name:</label>
+          <input  type="text" name="entree[name]"></input><br>
+      <label>New Entrée Description:</label>
+          <input  type="text" name="entree[description]"></input><br>
+      <label>New Entrée Ingredients:</label>
+          <input  type="text" name="entree[ingredients]"></input>
+
+      <h4><label>Please select the Menu you woud like to add it to:</label></h4>
+          <%Menu.all.each do |menu|%>
+            <input type="checkbox" name="menu[menu_id]" value="<%=menu.id%>" <%='checked' if @entree.menu == menu %>><%=menu.name%></input>
+          <%end%>
+
+
+          <h4><label>If you wish to create a new Menu, please enter:</label>
+            <input  type="text" name="menu[name]"></input></h4>
+
+          <input type="submit" value="Submit Changes">
+        </form>
+
+  </body>
+</html>

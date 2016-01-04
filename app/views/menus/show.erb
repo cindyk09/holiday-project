@@ -1,0 +1,15 @@
+<h1><%=@menu.name%></h1>
+<h4>Entrees:</h4>
+<ul>
+     <%@menu.entrees.each do |entree|%>
+  <li><%=entree.name%></li>
+  <%end%>
+
+  <p>
+    WARNING! If you wish to delete all please click below:<br>
+    <form action="/menus/<%=@menu.id%>/delete" method="post">
+      <input type="submit" value="DELETE"></p>
+    </form>
+  </p>
+
+</ul>
