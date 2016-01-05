@@ -12,15 +12,16 @@ class EntreesController < ApplicationController
   post '/entrees' do
 
     if !params["menu"]["name"].empty?
-      @menu = Menu.create(params["menu"])
-      @entree = Entree.create("name" => params[:entree][:name], "description" => params[:entree][:description], "ingredients" => params[:entree][:ingredients])
+      @menu = Menu.create(params[:menu])
+      @entree = Entree.create(params[:entree])
       @entree.menu = @menu
-      @menu.entrees << @menu
+      @menu.entrees << @entree
       @entree.save
       @menu.save
     else
+
       @entree = Entree.create(params[:entree])
-      @entree.menu = Entree.find_by(id: params[:menu][:menu_id])
+      @entree.menu = Menu.find_by(id: params[:menu][:menu_id])
       @entree.menu.entrees << @entree
       @entree.save
       @entree.menu.save
@@ -51,9 +52,9 @@ class EntreesController < ApplicationController
     redirect to "entrees/#{@entree.id}"
   end
 
-  post '/pets/:id/delete' do
-    @pet = Pet.find_by(params[:id])
-    @pet.destroy
+  post '/entrees/:id/delete' do
+    @entree = Entree.find_by(params[:id])
+    @entree.destroy
     redirect to '/pets'
   end
 end

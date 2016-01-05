@@ -12,10 +12,10 @@ class MenusController < ApplicationController
   post '/menus' do
     @menu = Menu.create(params[:menu])
     if !params["entree"]["name"].empty?
-      @menu.entrees << Entree.create("name" => params[:entree][:name], "description" => params[:entree][:description], "ingredients" => params[:entree][:ingredients])
+      @menu.entrees << Entree.create(params[:entree])
     end
     @menu.save
-    redirect to "menus"
+    redirect to "menus/#{@menu.id}"
   end
 
 
@@ -30,10 +30,11 @@ class MenusController < ApplicationController
   end
 
   post '/menus/:id' do
+    binding.pry
     @menu = Menu.find(params[:id])
     @menu.update(params["menu"])
     if !params["entree"]["name"].empty?
-      @menu.entrees << Entree.create(name: params["entree"]["name"]["description"]["ingredients"])
+      @menu.entrees << Entree.create(params[:entree])
     end
     redirect to "menus/#{@menu.id}"
   end

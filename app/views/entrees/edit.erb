@@ -13,7 +13,7 @@
       <%= "INGREDIENTS: #{@entree.ingredients}" %><br><br>
 
     <h4>EDIT TO:</h4>
-    <form action="/entrees" method="POST">
+    <form action="/entrees/<%= @entree.id%>" method="POST">
       <label>New Entrée Name:</label>
           <input  type="text" name="entree[name]"></input><br>
       <label>New Entrée Description:</label>
@@ -25,7 +25,6 @@
           <%Menu.all.each do |menu|%>
             <input type="checkbox" name="menu[menu_id]" value="<%=menu.id%>" <%='checked' if @entree.menu == menu %>><%=menu.name%></input>
           <%end%>
-
 
           <h4><label>If you wish to create a new Menu, please enter:</label>
             <input  type="text" name="menu[name]"></input></h4>

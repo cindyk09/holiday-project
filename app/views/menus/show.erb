@@ -1,8 +1,13 @@
 <h1><%=@menu.name%></h1>
 <h4>Entrees:</h4>
 <ul>
-     <%@menu.entrees.each do |entree|%>
-  <li><%=entree.name%></li>
+
+  <%@menu.entrees.each do |entree|%>
+    <li>Entree:<%=entree.name%></li>
+      <ul>
+      Description: <%= entree.description %><br>
+      Ingredients: <%= entree.ingredients %>
+      </ul>
   <%end%>
 
   <p>
